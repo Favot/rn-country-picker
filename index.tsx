@@ -14,7 +14,6 @@ import {
 } from "react-native"
 import CountryJSON from "./src/CountryPicker/countries.json"
 import CountryButton from "./src/CountryPicker/CountryButton"
-import CountryListItem from "./src/CountryPicker/CountryListItem"
 import SearchBar from "./src/CountryPicker/SearchBar"
 
 const CountryPicker = (props: CountryPickerProps) => {
@@ -94,7 +93,7 @@ const CountryPicker = (props: CountryPickerProps) => {
               showsVerticalScrollIndicator={false}
               keyExtractor={(item, index) => index.toString()}
               renderItem={(item) => (
-                <CountryListItem
+                <CountryPicker
                   {...item}
                   language={props.language}
                   handleItemOnClick={handleItemOnClick}
