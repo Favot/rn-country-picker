@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Pressable,
   I18nManager,
-} from "react-native";
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native"
 
 const CountryListItem = (props) => {
   return (

@@ -1,14 +1,27 @@
+import React, { useState } from "react"
 import {
-  View,
+  I18nManager,
+  Image,
+  ImageSourcePropType,
+  Platform,
   StyleSheet,
   TextInput,
-  Image,
-  I18nManager,
-  Platform,
-} from "react-native";
-import React, { useState } from "react";
+  View,
+  ViewStyle,
+} from "react-native"
 
-const SearchBar = (props) => {
+
+type SearchBarProps = {
+  searchBarContainerStyle?: ViewStyle;
+  searchInputStyle?: ViewStyle;
+  searchBarPlaceholderTextColor?: string;
+  searchBarPlaceHolder?: string;
+  hideSearchBar?: boolean;
+  searchIcon?: ImageSourcePropType;
+  searchByCountryNameCode?: (text: string) => void;
+}
+
+const SearchBar = (props: SearchBarProps) => {
   const search = props.searchIcon
     ? props.searchIcon
     : require("../../res/ic_search.png");

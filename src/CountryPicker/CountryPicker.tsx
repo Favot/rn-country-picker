@@ -1,35 +1,38 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   FlatList,
   I18nManager,
-  Modal,
-  StyleSheet,
-  Pressable,
-  View,
-  SafeAreaView,
-  ViewStyle,
-  TextStyle,
   ImageSourcePropType,
   ImageStyle,
-} from "react-native";
-import CountryJSON from "./countries.json";
-import SearchBar from "./SearchBar";
-import CountryListItem from "./CountryListItem";
-import CountryButton from "./CountryButton";
+  Modal,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native"
+import CountryJSON from "./countries.json"
+import CountryButton from "./CountryButton"
+import CountryListItem from "./CountryListItem"
+import SearchBar from "./SearchBar"
+
+
 
 const CountryPicker = (props: CountryPickerProps) => {
   const [countryJson, setCountryJson] = useState<any[]>(CountryJSON);
-  const [isModalVisible, toggleModal] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const searchByCountryNameCode = (searchText: string) => {
-    if (/^-{0,1}\d+$/.test(searchText.trim())) {
-      var filteredJson = CountryJSON.filter((item) => {
+    let filteredJson: any[] = [];
+    if (/^-?\d+$/.test(searchText.trim())) {
+      filteredJson = CountryJSON.filter((item) => {
         return item.callingCode.startsWith(searchText?.trim());
       });
     } else {
-      var filteredJson = CountryJSON.filter((item) => {
+        filteredJson = CountryJSON.filter((item) => {
         const itemData =
-          item.name[props.language]?.toUpperCase() || item.name[props.language];
+          item.name[props.language ?? "en"]?.toUpperCase() || item.name[props.language ?? "en"];
         const queryText = searchText?.trim()?.toUpperCase() || searchText;
         return itemData?.includes(queryText);
       });
@@ -42,13 +45,13 @@ const CountryPicker = (props: CountryPickerProps) => {
   };
 
   const handleItemOnClick = (item: CountryJsonProps) => {
-    toggleModal(false);
+    setIsModalVisible(false);
     setCountryJson(CountryJSON);
     props.selectedValue && props.selectedValue(item);
   };
 
   const toggleModal1 = (value: boolean) => {
-    toggleModal(value);
+    setIsModalVisible(value);
   };
 
   return (
@@ -59,19 +62,19 @@ const CountryPicker = (props: CountryPickerProps) => {
         transparent
         visible={isModalVisible}
         animationType={props.animationType}
-        onRequestClose={() => toggleModal(false)}
+        onRequestClose={() => setIsModalVisible(false)}
       >
         <SafeAreaView style={styles.safeAreaView}>
           <Pressable
             style={styles.onPressClose}
-            onPress={() => toggleModal(false)}
+            onPress={() => setIsModalVisible(false)}
           />
           <View style={styles.container}>
             <Pressable
               style={styles.closePress}
               onPress={() => {
                 setCountryJson(CountryJSON);
-                toggleModal(false);
+                setIsModalVisible(false);
               }}
             >
               <View style={styles.backDropStyle} />

@@ -1,16 +1,16 @@
-import React from "react";
+import React from "react"
 import {
-  View,
-  Text,
-  StyleSheet,
   Image,
-  Pressable,
-  ImageStyle,
-  TextStyle,
-  ViewStyle,
   ImageSourcePropType,
-} from "react-native";
-import CountryJSON from "./countries.json";
+  ImageStyle,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native"
+import CountryJSON from "./countries.json"
 
 interface CountryButtonProps {
   countryId?: string;
@@ -22,9 +22,7 @@ interface CountryButtonProps {
   countryCode?: string | any;
   hideCountryFlag?: boolean;
   hideCountryCode?: boolean;
-  searchBarPlaceHolder?: string;
   disable?: boolean;
-  selectedValue?: Function;
   toggleModal1?: any;
 }
 
