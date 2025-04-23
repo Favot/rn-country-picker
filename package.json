@@ -33,9 +33,5 @@
 	"bugs": {
 		"url": "https://github.com/vishaldhanotiya/rn-country-picker/issues"
 	},
-	"homepage": "https://github.com/vishaldhanotiya/rn-country-picker#readme",
-	"dependencies": {
-		"react": "^19.1.0",
-		"react-native": "^0.79.1"
-	}
+	"homepage": "https://github.com/vishaldhanotiya/rn-country-picker#readme"
 }
