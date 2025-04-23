@@ -110,30 +110,32 @@ const CountryPicker = (props: CountryPickerProps) => {
 export default CountryPicker;
 
 export interface CountryJsonProps {
-  currency: "string";
-  callingCode: number;
-  flag: "string";
+  id: number;
+  countryCode: string;
+  currency: string;
+  callingCode: string;
+  flag: string;
   name: {
-    en: "string";
-    cym: "string";
-    deu: "string";
-    fra: "string";
-    hrv: "string";
-    ita: "string";
-    jpn: "string";
-    nld: "string";
-    por: "string";
-    rus: "string";
-    spa: "string";
-    svk: "string";
-    fin: "string";
-    zho: "string";
-    isr: "string";
-    ar: "string";
+    en: string;
+    cym?: string;
+    deu: string;
+    fra: string;
+    hrv: string;
+    ita: string;
+    jpn: string;
+    nld: string;
+    por: string;
+    rus: string;
+    spa: string;
+    svk: string;
+    fin: string;
+    zho: string;
+    isr: string;
+    ar?: string;
   };
 }
 export interface CountryPickerProps {
-  countryId?: string;
+  countryId?: number;
   animationType?: "none" | "slide" | "fade" | undefined;
   searchBarContainerStyle?: ViewStyle;
   pickerContainerStyle?: ViewStyle;

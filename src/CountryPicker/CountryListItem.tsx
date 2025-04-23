@@ -5,10 +5,19 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  TextStyle,
   View,
 } from "react-native"
 
-const CountryListItem = (props) => {
+type CountryListItemProps = {
+  item: any;
+  handleItemOnClick: (item: any) => void;
+  hideCountryFlag: boolean;
+  countryNameTextStyle: TextStyle;
+  language: string;
+}
+
+const CountryListItem = (props: CountryListItemProps) => {
   return (
     <View>
       <Pressable onPress={() => props.handleItemOnClick(props.item)}>
