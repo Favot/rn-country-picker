@@ -10,11 +10,11 @@ import {
 } from "react-native"
 
 type CountryListItemProps = {
-  item: any;
-  handleItemOnClick: (item: any) => void;
-  hideCountryFlag: boolean;
-  countryNameTextStyle: TextStyle;
-  language: string;
+  item: any
+  handleItemOnClick: (item: any) => void
+  hideCountryFlag?: boolean
+  countryNameTextStyle?: TextStyle
+  language: string
 }
 
 const CountryListItem = (props: CountryListItemProps) => {
@@ -40,10 +40,10 @@ const CountryListItem = (props: CountryListItemProps) => {
         <View style={styles.divider} />
       </Pressable>
     </View>
-  );
-};
+  )
+}
 
-export default CountryListItem;
+export default CountryListItem
 
 const styles = StyleSheet.create({
   divider: {
@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
     height: 25,
     borderRadius: 3,
   },
-});
+})

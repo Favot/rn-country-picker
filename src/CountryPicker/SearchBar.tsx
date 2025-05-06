@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import {
   I18nManager,
   Image,
@@ -22,9 +22,8 @@ type SearchBarProps = {
 }
 
 const SearchBar = (props: SearchBarProps) => {
-  const search = props.searchIcon
-    ? props.searchIcon
-    : require("../../res/ic_search.png");
+  const search = props.searchIcon ?? require("../../res/ic_search.png");
+
   const [_text, setText] = useState("");
   return (
     <View style={[styles.searchBarStyle, props.searchBarContainerStyle]}>
@@ -44,7 +43,6 @@ const SearchBar = (props: SearchBarProps) => {
           placeholder={props.searchBarPlaceHolder ?? "Search"}
           keyboardType="default"
           returnKeyType={"done"}
-          blurOnSubmit={true}
         />
       )}
     </View>

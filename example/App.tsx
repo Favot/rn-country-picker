@@ -1,13 +1,21 @@
-import React, { useState } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import CountryPicker from "rn-country-picker";
+import React, { useState } from "react"
+import { Platform, StyleSheet, Text, View } from "react-native"
+import CountryPicker from "rn-country-picker"
+
+type SelectedValueProps = {
+  callingCode: string
+  countryCode: string
+  currency: string
+  flag: string
+  id: number
+}
 
 const App = () => {
-  const [countryCode, setCountryCode] = useState<string>("91");
+  const [countryCode, setCountryCode] = useState<string>("91")
 
-  const selectedValue = (value) => {
-    setCountryCode(value?.callingCode);
-  };
+  const selectedValue = (value: SelectedValueProps) => {
+    setCountryCode(value?.callingCode)
+  }
 
   return (
     <View style={styles.container}>
@@ -22,9 +30,9 @@ const App = () => {
         selectedValue={selectedValue}
       />
     </View>
-  );
-};
-export default App;
+  )
+}
+export default App
 
 const styles = StyleSheet.create({
   container: {
@@ -88,4 +96,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 5,
   },
-});
+})
