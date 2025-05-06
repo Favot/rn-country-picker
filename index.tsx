@@ -18,41 +18,41 @@ import CountryListItem from "./src/CountryPicker/CountryListItem"
 import SearchBar from "./src/CountryPicker/SearchBar"
 
 const CountryPicker = (props: CountryPickerProps) => {
-  const [countryJson, setCountryJson] = useState<any[]>(CountryJSON);
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [countryJson, setCountryJson] = useState<any[]>(CountryJSON)
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
 
   const searchByCountryNameCode = (searchText: string) => {
-    let filteredJson: any[] = [];
+    let filteredJson: any[] = []
 
     if (/^-?\d+$/.test(searchText.trim())) {
-       filteredJson = CountryJSON.filter((item) => {
-        return item.callingCode.startsWith(searchText?.trim());
-      });
+      filteredJson = CountryJSON.filter((item) => {
+        return item.callingCode.startsWith(searchText?.trim())
+      })
     } else {
       filteredJson = CountryJSON.filter((item) => {
         const itemData =
-          item.name[props.language ?? "en"]?.toUpperCase() || item.name[props.language ?? "en"];
-        const queryText = searchText?.trim()?.toUpperCase() || searchText;
-        return itemData?.includes(queryText);
-      });
+          item.name[props.language ?? "en"]?.toUpperCase() || item.name[props.language ?? "en"]
+        const queryText = searchText?.trim()?.toUpperCase() || searchText
+        return itemData?.includes(queryText)
+      })
     }
     if (searchText.length > 0) {
-      setCountryJson([...filteredJson]);
+      setCountryJson([...filteredJson])
     } else {
-      setCountryJson([...CountryJSON]);
+      setCountryJson([...CountryJSON])
     }
-  };
+  }
 
   const handleItemOnClick = (item: CountryJsonProps) => {
-    setIsModalVisible(false);
-    setCountryJson(CountryJSON);
-    props.selectedValue && props.selectedValue(item);
-  };
+    setIsModalVisible(false)
+    setCountryJson(CountryJSON)
+    props.selectedValue && props.selectedValue(item)
+  }
 
   const toggleModal1 = (value: boolean) => {
-    setIsModalVisible(value);
-    setCountryJson(CountryJSON);
-  };
+    setIsModalVisible(value)
+    setCountryJson(CountryJSON)
+  }
 
   return (
     <View>
@@ -73,8 +73,8 @@ const CountryPicker = (props: CountryPickerProps) => {
             <Pressable
               style={styles.closePress}
               onPress={() => {
-                setCountryJson(CountryJSON);
-                setIsModalVisible(false);
+                setCountryJson(CountryJSON)
+                setIsModalVisible(false)
               }}
             >
               <View style={styles.backDropStyle} />
@@ -96,7 +96,7 @@ const CountryPicker = (props: CountryPickerProps) => {
               renderItem={(item) => (
                 <CountryListItem
                   {...item}
-                  language={props.language}
+                  language={props.language ?? "en"}
                   handleItemOnClick={handleItemOnClick}
                 />
               )}
@@ -105,68 +105,68 @@ const CountryPicker = (props: CountryPickerProps) => {
         </SafeAreaView>
       </Modal>
     </View>
-  );
-};
-export default CountryPicker;
+  )
+}
+export default CountryPicker
 
 export interface CountryJsonProps {
-  currency: "string";
-  callingCode: number;
-  flag: "string";
+  currency: "string"
+  callingCode: number
+  flag: "string"
   name: {
-    en: "string";
-    cym: "string";
-    deu: "string";
-    fra: "string";
-    hrv: "string";
-    ita: "string";
-    jpn: "string";
-    nld: "string";
-    por: "string";
-    rus: "string";
-    spa: "string";
-    svk: "string";
-    fin: "string";
-    zho: "string";
-    isr: "string";
-    ar: "string";
-  };
+    en: "string"
+    cym: "string"
+    deu: "string"
+    fra: "string"
+    hrv: "string"
+    ita: "string"
+    jpn: "string"
+    nld: "string"
+    por: "string"
+    rus: "string"
+    spa: "string"
+    svk: "string"
+    fin: "string"
+    zho: "string"
+    isr: "string"
+    ar: "string"
+  }
 }
 export interface CountryPickerProps {
-  countryId?: string;
-  animationType?: "none" | "slide" | "fade" | undefined;
-  searchBarContainerStyle?: ViewStyle;
-  pickerContainerStyle?: ViewStyle;
-  countryNameTextStyle?: TextStyle;
-  selectedCountryTextStyle?: TextStyle;
-  dropDownIcon?: ImageSourcePropType;
-  searchIcon?: ImageSourcePropType;
-  dropDownIconStyle?: ImageStyle;
-  countryFlagStyle?: ImageStyle;
-  countryCode?: string | any;
-  hideCountryFlag?: boolean;
-  hideCountryCode?: boolean;
-  selectedFlag?: boolean;
-  searchBarPlaceHolder?: string;
-  disable?: boolean;
-  selectedValue?: Function;
+  countryCode: string
+  countryId?: number
+  animationType?: "none" | "slide" | "fade"
+  searchBarContainerStyle?: ViewStyle
+  pickerContainerStyle?: ViewStyle
+  countryNameTextStyle?: TextStyle
+  selectedCountryTextStyle?: TextStyle
+  dropDownIcon?: ImageSourcePropType
+  searchIcon?: ImageSourcePropType
+  dropDownIconStyle?: ImageStyle
+  countryFlagStyle?: ImageStyle
+  hideCountryFlag?: boolean
+  hideCountryCode?: boolean
+  selectedFlag?: boolean
+  searchBarPlaceHolder?: string
+  disable?: boolean
+  selectedValue?: Function
   language?:
-    | "en"
-    | "cym"
-    | "deu"
-    | "fra"
-    | "hrv"
-    | "ita"
-    | "jpn"
-    | "nld"
-    | "por"
-    | "rus"
-    | "spa"
-    | "svk"
-    | "fin"
-    | "zho"
-    | "isr"
-    | "ar";
+  | "en"
+  | "cym"
+  | "deu"
+  | "fra"
+  | "hrv"
+  | "ita"
+  | "jpn"
+  | "nld"
+  | "por"
+  | "rus"
+  | "spa"
+  | "svk"
+  | "fin"
+  | "zho"
+  | "isr"
+  | "ar"
 }
 const styles = StyleSheet.create({
   container: {
@@ -212,4 +212,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "grey",
   },
-});
+})
