@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import {
   I18nManager,
   Image,
@@ -12,19 +12,19 @@ import {
 
 
 type SearchBarProps = {
-  searchBarContainerStyle?: ViewStyle;
-  searchInputStyle?: ViewStyle;
-  searchBarPlaceholderTextColor?: string;
-  searchBarPlaceHolder?: string;
-  hideSearchBar?: boolean;
-  searchIcon?: ImageSourcePropType;
-  searchByCountryNameCode?: (text: string) => void;
+  searchBarContainerStyle?: ViewStyle
+  searchInputStyle?: ViewStyle
+  searchBarPlaceholderTextColor?: string
+  searchBarPlaceHolder?: string
+  hideSearchBar?: boolean
+  searchIcon?: ImageSourcePropType
+  searchByCountryNameCode?: (text: string) => void
 }
 
 const SearchBar = (props: SearchBarProps) => {
-  const search = props.searchIcon ?? require("../../res/ic_search.png");
+  const search = props.searchIcon ?? require("../../res/ic_search.png")
 
-  const [_text, setText] = useState("");
+  const [_text, setText] = useState("")
   return (
     <View style={[styles.searchBarStyle, props.searchBarContainerStyle]}>
       <Image resizeMode="contain" style={styles.imageStyle} source={search} />
@@ -34,8 +34,8 @@ const SearchBar = (props: SearchBarProps) => {
           style={[styles.textInputStyle, props.searchInputStyle]}
           onChangeText={props.searchByCountryNameCode}
           onChange={(event) => {
-            const { text } = event.nativeEvent;
-            setText(text);
+            const { text } = event.nativeEvent
+            setText(text)
           }}
           placeholderTextColor={
             props.searchBarPlaceholderTextColor ?? "#A9A9A9"
@@ -46,9 +46,9 @@ const SearchBar = (props: SearchBarProps) => {
         />
       )}
     </View>
-  );
-};
-export default SearchBar;
+  )
+}
+export default SearchBar
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
     height: 20,
     transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
   },
-});
+})
