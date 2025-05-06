@@ -11,9 +11,10 @@ import {
   ViewStyle,
 } from "react-native"
 import CountryJSON from "./countries.json"
+import { CountryJsonProps } from "./CountryPicker"
 
 interface CountryButtonProps {
-  countryId?: string;
+  countryId?: number
   pickerContainerStyle?: ViewStyle;
   selectedCountryTextStyle?: TextStyle;
   dropDownIconStyle?: ImageStyle;
@@ -33,13 +34,13 @@ const CountryButton = (props: CountryButtonProps) => {
 
   const filteredJson = CountryJSON.filter(function (item) {
     return item.callingCode === props.countryCode?.replaceAll("+", "");
-  });
+  }) as CountryJsonProps[];
 
-  const selectedFlag = (filteredJson) => {
+  const selectedFlag = (filteredJson: CountryJsonProps[]) => {
     if (filteredJson.length === 1) {
-      return filteredJson[0]?.flag;
+      return filteredJson[0]?.flag || '';
     } else {
-      return filteredJson.filter((item) => item.id == props.countryId)[0]?.flag;
+      return filteredJson.filter((item) => item.id == props.countryId)[0]?.flag || '';
     }
   };
 
